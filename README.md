@@ -11,8 +11,11 @@
 
 O portal digital foi desenvolvido para integrar médicos, pacientes e equipes de apoio (limpeza, farmácia, manutenção e administração) do Hospital Sabará. A solução visa resolver problemas como falhas na comunicação, atrasos nos agendamentos, dificuldade no acesso a informações e ineficiência nos processos administrativos, trazendo uma maior organização e eficiência para o hospital.
 
-## Questões Técnicas
-COMPLETAR DEPOIS
+## Especificações Técnicas
+COMPLETAR DEPOIS (principais componentes, etc)
+
+## Diagrama da arquitetura e fluxo do projeto
+IMAGEM E FAZER UMA DESCRIÇÃO DETALHADA
 
 ## Funcionalidades
 - **Comunicação Eficiente:** Canal centralizado entre médicos, pacientes e equipes.
