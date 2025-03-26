@@ -12,13 +12,13 @@
 O portal digital foi desenvolvido para integrar médicos, pacientes e equipes de apoio (limpeza, farmácia, manutenção e administração) do Hospital Sabará. A solução visa resolver problemas como falhas na comunicação, atrasos nos agendamentos, dificuldade no acesso a informações e ineficiência nos processos administrativos, trazendo uma maior organização e eficiência para o hospital.
 
 ## Estrutura do projeto de Arduino
-### Como Funciona?
-1 - O Arduino Uno lê o cartão RFID.
-2 - Envia o ID via serial para o ESP32.
-3 - O ESP32 publica esse ID no Azure via MQTT.
+### Como Funciona?/////REVISAR
+1 - O Arduino Uno lê o cartão RFID e a distância (controle de estoque).
+2 - Envia o ID e dados da distância via serial para o ESP32.??
+3 - O ESP32 publica esse ID no Azure via MQTT.??
 4 - O Node-RED recebe e exibe os dados no Dashboard.
 
-### Configuração do Wokwi
+### Configuração do Wokwi /////REVISAR
 No Wokwi, simulamos: 
 ✅ Arduino Uno → Lê RFID e envia via serial.
 ✅ ESP32 → Conecta ao Wi-Fi e publica dados no Azure via MQTT.
@@ -26,25 +26,33 @@ No Wokwi, simulamos:
 
 ## Especificações Técnicas
 COMPLETAR DEPOIS (principais componentes, etc)
+### Bibliotecas Utilizadas
+- #include <Wire.h>
+- #include <LiquidCrystal_I2C.h>
+
+### Configurações e Definições
+- LiquidCrystal_I2C lcd(0x27, 16, 2): Endereço padrão LCD e definição do display escolhido 16 colunas e 2 linhas (16x2).
+- #define TRIG_PIN 13 & #define ECHO_PIN 12: Defiição dos pinos do Sensor Ultrassônico.
+
+### Simulações
+- Função simulateRFID(): Retorna um valor fixo "12345678", simulando um cartão RFID. //O objetivo é pegar o valor real lido
+- Função simulateDistance(): Gera um número aleatório entre 5 cm e 100 cm, simulando a leitura do sensor ultrassônico. //Teria que calcular a distância com base nos sinais de Trigger e ECHO.
+
+### Configuração Inicial no setup()
+1- Inicialização do LCD
+2- Configuração do Sensor Ultrassônico
+3- Inicialização da comunicação com a Serial
+
+### Configuração no loop()
+1- Obtenção do ID e Distância
+2- Exibição do ID e Distância
+3- Envio de dados para a Serial
+4- Delay
 
 ## Diagrama da arquitetura e fluxo do projeto
 IMAGEM E FAZER UMA DESCRIÇÃO DETALHADA
 
-## Funcionalidades Gerais
-- **Comunicação Eficiente:** Canal centralizado entre médicos, pacientes e equipes.
-- **Automatização de Processos:** Agendamento de consultas, registros médicos e controle de medicamentos.
-- **Acesso Centralizado:** Interface para prontuários, relatórios e atualizações em tempo real.
-- **Eficiência Operacional:** Redução de erros administrativos e otimização de tempo.
-- **Gamificação:** Atividades interativas para crianças, tornando o ambiente mais acolhedor.
-
-## Benefícios Gerais
-- **Para Pacientes e Familiares:** Comunicação direta com médicos, acompanhamento de tratamentos e acesso a resultados.
-- **Para Médicos e Equipes de Saúde:** Acesso rápido a informações clínicas, melhor coordenação e redução de tarefas manuais.
-- **Para Funcionários de Apoio:** Organização de tarefas de limpeza e distribuição de medicamentos.
-- **Para Gestores:** Relatórios para decisões rápidas e gestão de recursos otimizada.
-
-## Estrutura Geral
-- **Dashboards:** Para cada home existe um dashboard personalizado de acordo com as necessidades do tipo de cadastro.
-- **Área de Login e Cadastro:** O paciente e os funcionários do hospital terão um login e senha para entrar no portal. Isso permite a segurança e personalização das informações armazenadas.
-- **Automatização de Processos:** No portal, é possível fazer qualquer atividade do setor hospitalar que envolva a enfermaria, medicina, farmácia, limpeza, manutenção e administração. 
-- **Chatbot:** Desenvolvimento de Chatbot para facilitar a comunicação entre as áreas.
+## Links Externos
+- Documentação do Projeto:
+- Pitch:
+- Elaboração Geral: 
