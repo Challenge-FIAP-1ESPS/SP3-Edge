@@ -20,6 +20,9 @@ Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma ve
 - Interatividade Local: O LCD proporciona uma interface visual imediata.
 - Simplicidade e Custo-Benefício: Usa componentes acessíveis e fáceis de integrar, como o Arduino UNO, RFID e sensores ultrassônicos.
 
+## Link Wowki
+https://wokwi.com/projects/426419492478971905 
+
 ## Estrutura do projeto de Arduino
 ### Como Funciona?/////REVISAR
 1. O Arduino Uno lê o cartão RFID e a distância (controle de estoque).
