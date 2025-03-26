@@ -22,10 +22,10 @@ Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma ve
 
 ## Estrutura do projeto de Arduino
 ### Como Funciona?/////REVISAR
-1 - O Arduino Uno lê o cartão RFID e a distância (controle de estoque).
-2 - Envia o ID e dados da distância via serial para o ESP32. //O QUE É ISSO
-3 - O ESP32 publica esse ID no Azure via MQTT. //O QUE É ISSO
-4 - O Node-RED recebe e exibe os dados no Dashboard. //AINDA NAO FOI TESTADO
+1. O Arduino Uno lê o cartão RFID e a distância (controle de estoque).
+2. Envia o ID e dados da distância via serial para o ESP32. //O QUE É ISSO
+3. O ESP32 publica esse ID no Azure via MQTT. //O QUE É ISSO
+4. O Node-RED recebe e exibe os dados no Dashboard. //AINDA NAO FOI TESTADO
 
 ### Configuração do Wokwi /////REVISAR
 No Wokwi, simulamos: 
