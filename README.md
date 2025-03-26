@@ -11,7 +11,7 @@
 
 O portal digital foi desenvolvido para integrar médicos, pacientes e equipes de apoio (limpeza, farmácia, manutenção e administração) do Hospital Sabará. A solução visa resolver problemas como falhas na comunicação, atrasos nos agendamentos, dificuldade no acesso a informações e ineficiência nos processos administrativos, trazendo uma maior organização e eficiência para o hospital.
 
-## Ideia da aplicação no Arduino
+## Ideia da aplicação com Arduino
 
 Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma vez que é possível fazer a leitura de IDs de cartões e um sensor ultrassônico para medir a distância, que simula a quantidade de estoque disponível. As informações são exibidas em tempo real em um LCD 16x2 para visualização local e também são enviadas ao Serial Monitor para fins de diagnóstico e monitoramento. //mudar isso falando mqtt
 
