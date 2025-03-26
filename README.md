@@ -29,9 +29,9 @@ Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma ve
 
 ### Configuração do Wokwi /////REVISAR
 No Wokwi, simulamos: 
-✅ Arduino Uno → Lê RFID e envia via serial.
-✅ ESP32 → Conecta ao Wi-Fi e publica dados no Azure via MQTT. //O QUE É ISSO
-✅ Broker MQTT (Azure IoT Hub) → Gerencia a comunicação. //NAO FUNCIONA
+- Arduino Uno → Lê RFID e envia via serial.
+- ESP32 → Conecta ao Wi-Fi e publica dados no Azure via MQTT. //O QUE É ISSO
+- Broker MQTT (Azure IoT Hub) → Gerencia a comunicação. //NAO FUNCIONA
 
 ## Especificações Técnicas
 COMPLETAR DEPOIS (principais componentes, etc)
