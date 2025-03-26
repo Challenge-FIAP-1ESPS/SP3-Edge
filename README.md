@@ -55,15 +55,15 @@ COMPLETAR DEPOIS (principais componentes, etc)
 - Função readDistance(): Retorna a distância real baseada nos sinais de TRIGGER e ECHO
 
 ### Configuração Inicial no setup()
-1- Inicialização do LCD
-2- Configuração do Sensor Ultrassônico
-3- Inicialização da comunicação com a Serial
+1. Inicialização do LCD
+2. Configuração do Sensor Ultrassônico
+3. Inicialização da comunicação com a Serial
 
 ### Configuração no loop()
-1- Obtenção do ID e Distância
-2- Exibição do ID e Distância
-3- Envio de dados para a Serial
-4- Delay
+1. Obtenção do ID e Distância
+2. Exibição do ID e Distância
+3. Envio de dados para a Serial
+4. Delay
 
 ## Diagrama da arquitetura e fluxo do projeto
 IMAGEM E FAZER UMA DESCRIÇÃO DETALHADA
