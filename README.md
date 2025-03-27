@@ -50,7 +50,7 @@ COMPLETAR DEPOIS (principais componentes, etc)
 
 ### Configurações e Definições
 - LiquidCrystal_I2C lcd(0x27, 16, 2): Endereço padrão LCD e definição do display escolhido 16 colunas e 2 linhas (16x2).
-- #define TRIG_PIN 13 & #define ECHO_PIN 12: Defiição dos pinos do Sensor Ultrassônico.
+- #define TRIG_PIN 13 & #define ECHO_PIN 12: Definição dos pinos do Sensor Ultrassônico.
 
 ### Funções principais
 - simulateRFID(): Retorna um valor fixo "12345678", simulando um cartão RFID. //O objetivo é pegar o valor real lido
