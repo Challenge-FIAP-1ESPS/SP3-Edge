@@ -24,17 +24,16 @@ Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma ve
 https://wokwi.com/projects/426419492478971905 
 
 ## Estrutura do projeto de Arduino
-### Como Funciona?/////REVISAR
-1. O Arduino Uno lê o cartão RFID e a distância (controle de estoque).
-2. Envia o ID e dados da distância via serial para o ESP32. //O QUE É ISSO
-3. O ESP32 publica esse ID no Azure via MQTT. //O QUE É ISSO
-4. O Node-RED recebe e exibe os dados no Dashboard. //AINDA NAO FOI TESTADO
+### Como Funciona?
+1. O ESP32 lê o ID do cartão RFID e a distância do sensor ultrassônico. //ainda nao usado rfid
+2. Os dados coletados são enviados via serial para o ESP32.
+3. O ESP32 conecta-se ao Wi-Fi e publica esses dados no Azure IoT Hub via MQTT.
+4. O Node-RED recebe e exibe os dados no Dashboard (ainda não testado completamente).
 
 ### Configuração do Wokwi /////REVISAR
 No Wokwi, simulamos: 
-- Arduino Uno → Lê RFID e envia via serial.
-- ESP32 → Conecta ao Wi-Fi e publica dados no Azure via MQTT. //O QUE É ISSO
-- Broker MQTT (Azure IoT Hub) → Gerencia a comunicação. //NAO FUNCIONA
+- ESP32: Lê RFID e envia os dados via serial.
+- Broker MQTT (Azure IoT Hub): Responsável pela comunicação dos dados (atualmente não funcional).
 
 ## Especificações Técnicas
 COMPLETAR DEPOIS (principais componentes, etc)
@@ -43,8 +42,8 @@ COMPLETAR DEPOIS (principais componentes, etc)
 - #include <LiquidCrystal_I2C.h>
 
 ### Componentes Utilizados
-- Arduino UNO: Controlador principal responsável pela leitura dos sensores e controle do LCD.
-- Sensor RFID MFRC522: Utilizado para ler o ID de um cartão RFID, simulando a identificação de um produto no estoque.
+- ESP32: Controlador principal responsável pela leitura dos sensores, controle do LCD e comunicação Wi-Fi.
+- Sensor RFID MFRC522: Utilizado para ler o ID de um cartão RFID, simulando a identificação de um produto no estoque. //ainda nao usado
 - Sensor Ultrassônico HC-SR04: Usado para medir a distância entre o sensor e um objeto, com o intuito de simular a quantidade de estoque restante.
 - LCD 16x2 I2C: Display utilizado para mostrar informações ao usuário: ID do cartão e a distância medida pelo sensor ultrassônico.
 - Cabos e Protoboard: Para realizar as conexões físicas entre os componentes.
@@ -53,11 +52,11 @@ COMPLETAR DEPOIS (principais componentes, etc)
 - LiquidCrystal_I2C lcd(0x27, 16, 2): Endereço padrão LCD e definição do display escolhido 16 colunas e 2 linhas (16x2).
 - #define TRIG_PIN 13 & #define ECHO_PIN 12: Defiição dos pinos do Sensor Ultrassônico.
 
-### Simulações
-- Função simulateRFID(): Retorna um valor fixo "12345678", simulando um cartão RFID. //O objetivo é pegar o valor real lido
-- Função readDistance(): Retorna a distância real baseada nos sinais de TRIGGER e ECHO
+### Funções principais
+- simulateRFID(): Retorna um valor fixo "12345678", simulando um cartão RFID. //O objetivo é pegar o valor real lido
+- readDistance(): Retorna a distância real baseada nos sinais de TRIGGER e ECHO
 
-### Configuração Inicial no setup()
+### Configuração Inicial setup()
 1. Inicialização do LCD
 2. Configuração do Sensor Ultrassônico
 3. Inicialização da comunicação com a Serial
@@ -69,7 +68,17 @@ COMPLETAR DEPOIS (principais componentes, etc)
 4. Delay
 
 ## Diagrama da arquitetura e fluxo do projeto
-IMAGEM E FAZER UMA DESCRIÇÃO DETALHADA
+![SP3-Challenge2025 drawio](https://github.com/user-attachments/assets/54395624-ed06-41a0-80ca-dee0e70a1d4c)
+
+### Explicação do Fluxograma
+
+- Início: O sistema é iniciado.
+- Importar Bibliotecas: As bibliotecas necessárias são carregadas.
+- Configurar LCD: O display LCD é inicializado.
+- Exibir Dados no LCD: O ID RFID e a distância são mostrados na tela.
+- Nova leitura de estoque?: O sistema verifica se deve continuar a leitura.
+  - Se "Sim": O fluxo retorna à exibição dos dados.
+  - Se "Não": O sistema finaliza a execução.
 
 ## Links Externos
 - Documentação do Projeto:
