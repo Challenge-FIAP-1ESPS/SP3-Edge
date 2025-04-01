@@ -68,12 +68,14 @@ COMPLETAR DEPOIS (principais componentes, etc)
 4. Delay
 
 ## Diagrama da arquitetura e fluxo do projeto
-![SP3-Challenge2025 drawio](https://github.com/user-attachments/assets/54395624-ed06-41a0-80ca-dee0e70a1d4c)
+![image](https://github.com/user-attachments/assets/afbaec04-1fa4-4411-863b-f9a03cb86258)
 
 ### Explicação do Fluxograma
 
 - Início: O sistema é iniciado.
 - Importar Bibliotecas: As bibliotecas necessárias são carregadas.
+- Conectar no Wi-Fi: Ao utilizar a rede de Wi-Fi do Wowki, ele conecta automaticamente.
+- Conectar no MQTT: 
 - Configurar LCD: O display LCD é inicializado.
 - Exibir Dados no LCD: O ID RFID e a distância são mostrados na tela.
 - Nova leitura de estoque?: O sistema verifica se deve continuar a leitura.
