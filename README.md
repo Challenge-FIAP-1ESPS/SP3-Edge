@@ -25,14 +25,14 @@ https://wokwi.com/projects/426419492478971905
 
 ## Estrutura do projeto de Arduino
 ### Como Funciona?
-1. O ESP32 lê o ID do cartão RFID e a distância do sensor ultrassônico. //ainda nao usado rfid
+1. O ESP32 lê o ID do cartão RFID (hipoteticamente) e a distância do sensor ultrassônico. 
 2. Os dados coletados são enviados via serial para o ESP32.
 3. O ESP32 conecta-se ao Wi-Fi e publica esses dados no Azure IoT Hub via MQTT.
-4. O Node-RED recebe e exibe os dados no Dashboard (ainda não testado completamente).
+4. O Node-RED recebe e exibe os dados no Dashboard.
 
-### Configuração do Wokwi /////REVISAR
+### Configuração do Wokwi 
 No Wokwi, simulamos: 
-- ESP32: Lê RFID e envia os dados via serial.
+- ESP32: Lê RFID (hipoteticamente) e envia os dados via serial.
 - Broker MQTT (Azure IoT Hub): Responsável pela comunicação dos dados (atualmente não funcional).
 
 ## Especificações Técnicas
