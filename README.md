@@ -21,7 +21,7 @@ Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma ve
 - Simplicidade e Custo-Benefício: Usa componentes acessíveis e fáceis de integrar, como o Arduino UNO, RFID e sensores ultrassônicos.
 
 ## Link Wowki
-https://wokwi.com/projects/426419492478971905 
+https://wokwi.com/projects/426442063798337537 
 
 ## Estrutura do projeto de Arduino -  Especificações Técnicas
 ### Como Funciona?
