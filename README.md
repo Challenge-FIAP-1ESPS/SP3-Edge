@@ -13,27 +13,27 @@ O portal digital foi desenvolvido para integrar médicos, pacientes e equipes de
 
 ## Ideia da aplicação com Arduino
 
-Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma vez que é possível fazer a leitura de IDs de cartões dos funcionários responsáveis pela entrada e retirada de medicamentos, e um sensor ultrassônico para medir a distância, que simula a quantidade de estoque disponível. Em termos de simulação, as informações são exibidas em tempo real em um LCD 16x2 para visualização local e também são enviadas ao Serial Monitor para fins de diagnóstico e monitoramento. Contudo, trazendo para a aplicação real, será conectado ao dashboard NODE-RED para o controle visual do estoque. 
+Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma vez que é possível fazer a leitura de IDs de cartões dos funcionários responsáveis pela entrada e retirada de medicamentos, e um sensor ultrassônico para medir a distância, que simula a quantidade de estoque disponível. Em termos de simulação, as informações são exibidas em tempo real em um LCD 16x2 para visualização local e também são enviadas ao Serial Monitor para fins de diagnóstico e monitoramento. Contudo, trazendo para a aplicação real, será conectado com uma pklataforma em nuvem, tago.io, para  recebimento de dados e o controle visual do estoque (dashboard). 
 
 ## Benefícios
 - Automação: Automatiza o processo de leitura de estoque e controle de inventário com RFID.
-- Interatividade Local: O LCD proporciona uma interface visual imediata.
-- Simplicidade e Custo-Benefício: Usa componentes acessíveis e fáceis de integrar, como o Arduino UNO, RFID e sensores ultrassônicos.
+- Interatividade Local: O dashboard proporciona uma interface visual imediata.
+- Simplicidade e Custo-Benefício: Usa componentes acessíveis e fáceis de integrar, como o ESPR32, RFID e sensores ultrassônicos.
 
-## Link Wowki
+## Link Wokwi
 https://wokwi.com/projects/426442063798337537 
 
 ## Estrutura do projeto de Arduino -  Especificações Técnicas
 ### Como Funciona?
 1. O ESP32 lê o ID do cartão RFID (hipoteticamente) e a distância do sensor ultrassônico. 
 2. Os dados coletados são enviados via serial para o ESP32.
-3. O ESP32 conecta-se ao Wi-Fi e publica esses dados no Azure IoT Hub via MQTT. //perguntar para o professor
+3. O ESP32 conecta-se ao Wi-Fi e publica esses dados no Tago.io via MQTT.
 4. O Node-RED recebe e exibe os dados no Dashboard.
 
 ### Configuração do Wokwi 
 No Wokwi, simulamos: 
 - ESP32: Lê RFID (hipoteticamente) e envia os dados via serial.
-- Broker MQTT (Azure IoT Hub): Responsável pela comunicação dos dados (atualmente não funcional). //perguntar para o professor
+- Broker MQTT: Responsável pela comunicação dos dados.
 
 ### Bibliotecas Utilizadas
 - #include <Wire.h>
@@ -66,7 +66,7 @@ No Wokwi, simulamos:
 4. Delay
 
 ## Diagrama da arquitetura e fluxo do projeto
-![image](https://github.com/user-attachments/assets/afbaec04-1fa4-4411-863b-f9a03cb86258)
+![image](https://github.com/user-attachments/assets/c6298e7d-34b8-4b73-a41c-118ef710f0f8)
 
 ### Explicação do Fluxograma
 
@@ -76,11 +76,12 @@ No Wokwi, simulamos:
 - Conectar no MQTT: Existe um broker (servidor), o "tópico" que é publicado pelos dispositivos e uma porta (1883). Tudo isso é gratuito e não é considerado muito seguro. Por isso, na próxima SPRINT será um processo mais refinado e personalizado.
 - Configurar LCD: O display LCD é inicializado.
 - Exibir Dados no LCD: O ID RFID e a distância são mostrados na tela.
+- Requisição HTTP (POST) - Irá postar os dados na plataforma de nuvem
+- Enviar dados para a plataforma em nuvem (tago.io): A plataforma escolhida, tago.io, irá receber os dados de um sensor. Nesse caso, o da distância.
 - Nova leitura de estoque?: O sistema verifica se deve continuar a leitura.
   - Se "Sim": O fluxo retorna à exibição dos dados.
   - Se "Não": O sistema finaliza a execução.
 
 ## Links Externos
-- Documentação do Projeto:
-- Pitch:
-- Elaboração Geral: 
+- Documentação do Projeto: https://docs.google.com/document/d/1Z9Fu4Gfrlv3Qu_EUzGQVUTOyZfjbj4FEVXcCdOAh9mo/edit?usp=sharing
+- Pitch: https://youtu.be/HGWAP5JJgus?si=1-d8mfUoh8zn4iuJ 
