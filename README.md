@@ -66,7 +66,7 @@ No Wokwi, simulamos:
 4. Delay
 
 ## Diagrama da arquitetura e fluxo do projeto
-![image](https://github.com/user-attachments/assets/c6298e7d-34b8-4b73-a41c-118ef710f0f8)
+![image](https://github.com/user-attachments/assets/524b5db3-2a30-4d8c-a895-11511bf946a7)
 
 ### Explicação do Fluxograma
 
