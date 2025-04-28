@@ -21,7 +21,7 @@ Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma ve
 - Simplicidade e Custo-Benefício: Usa componentes acessíveis e fáceis de integrar, como o ESPR32, RFID e sensores ultrassônicos.
 
 ## Link Wokwi
-https://wokwi.com/projects/426442063798337537 
+https://wokwi.com/projects/429499058870902785 
 
 ## Estrutura do projeto de Arduino -  Especificações Técnicas
 ### Como Funciona?
@@ -41,21 +41,21 @@ No Wokwi, simulamos:
 
 ### Componentes Utilizados
 - ESP32: Controlador principal responsável pela leitura dos sensores, controle do LCD e comunicação Wi-Fi.
-- Sensor RFID MFRC522: Utilizado para ler o ID de um cartão RFID, simulando a identificação de um produto no estoque. /AINDA NAO USADO
+- Sensor RFID MFRC522: Utilizado para ler o ID de um cartão RFID, simulando a identificação de um produto no estoque. (Ainda é só a simulação)
 - Sensor Ultrassônico HC-SR04: Usado para medir a distância entre o sensor e um objeto, com o intuito de simular a quantidade de estoque restante.
 - LCD 16x2 I2C: Display utilizado para mostrar informações ao usuário: ID do cartão e a distância medida pelo sensor ultrassônico.
 - Cabos e Protoboard: Para realizar as conexões físicas entre os componentes.
 
 ### Configurações e Definições
-- LiquidCrystal_I2C lcd(0x27, 16, 2): Endereço padrão LCD e definição do display escolhido 16 colunas e 2 linhas (16x2).
+- LiquidCrystal_I2C lcd(0x27, 16, 2): Endereço padrão LCD e definição do display escolhido 16 colunas e 2 linhas (16x2). (Apenas para teste interno)
 - #define TRIG_PIN 13 & #define ECHO_PIN 12: Definição dos pinos do Sensor Ultrassônico.
 
 ### Funções principais
-- simulateRFID(): Retorna um valor fixo "12345678", simulando um cartão RFID. //O objetivo é pegar o valor real lido
+- simulateRFID(): Retorna um valor fixo "12345678", simulando um cartão RFID. (O objetivo é pegar o valor real lido)
 - readDistance(): Retorna a distância real baseada nos sinais de TRIGGER e ECHO
 
 ### Configuração Inicial setup()
-1. Inicialização do LCD
+1. Inicialização do LCD (Apenas para teste interno)
 2. Configuração do Sensor Ultrassônico
 3. Inicialização da comunicação com a Serial
 
@@ -74,7 +74,7 @@ No Wokwi, simulamos:
 - Importar Bibliotecas: As bibliotecas necessárias são carregadas.
 - Conectar no Wi-Fi: Ao utilizar a rede de Wi-Fi do Wowki, ele conecta automaticamente.
 - Conectar no MQTT: Existe um broker (servidor), o "tópico" que é publicado pelos dispositivos e uma porta (1883). Tudo isso é gratuito e não é considerado muito seguro. Por isso, na próxima SPRINT será um processo mais refinado e personalizado.
-- Configurar LCD: O display LCD é inicializado.
+- Configurar LCD: O display LCD é inicializado.(Apenas para teste interno)
 - Exibir Dados no LCD: O ID RFID e a distância são mostrados na tela.
 - Requisição HTTP (POST) - Irá postar os dados na plataforma de nuvem
 - Enviar dados para a plataforma em nuvem (tago.io): A plataforma escolhida, tago.io, irá receber os dados de um sensor. Nesse caso, o da distância.
