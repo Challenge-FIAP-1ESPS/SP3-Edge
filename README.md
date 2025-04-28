@@ -37,7 +37,7 @@ No Wokwi, simulamos:
 
 ### Bibliotecas Utilizadas
 - #include <Wire.h>
-- #include <LiquidCrystal_I2C.h>
+- #include <LiquidCrystal_I2C.h> (Apenas para teste interno)
 
 ### Componentes Utilizados
 - ESP32: Controlador principal responsável pela leitura dos sensores, controle do LCD e comunicação Wi-Fi.
