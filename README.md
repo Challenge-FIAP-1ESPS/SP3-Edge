@@ -13,7 +13,8 @@ O portal digital foi desenvolvido para integrar médicos, pacientes e equipes de
 
 ## Ideia da aplicação com Arduino
 
-Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma vez que é possível fazer a leitura de IDs de cartões dos funcionários responsáveis pela entrada e retirada de medicamentos, e um sensor ultrassônico para medir a distância, que simula a quantidade de estoque disponível. Em termos de simulação, as informações são exibidas em tempo real em um LCD 16x2 para visualização local e também são enviadas ao Serial Monitor para fins de diagnóstico e monitoramento. Contudo, trazendo para a aplicação real, será conectado com uma pklataforma em nuvem, tago.io, para  recebimento de dados e o controle visual do estoque (dashboard). 
+Basicamente, o projeto visa criar um sistema de monitoramento de estoque, uma vez que é possível fazer a leitura de IDs de cartões dos funcionários responsáveis pela entrada e retirada de medicamentos, e um sensor ultrassônico para medir a distância, que simula a quantidade de estoque disponível. Em termos de simulação, as informações são exibidas em tempo real em um LCD 16x2 para visualização local e também são enviadas ao Serial Monitor para fins de diagnóstico e monitoramento. Contudo, trazendo para a aplicação real, será conectado com uma pklataforma em nuvem, tago.io, para  recebimento de dados e o controle visual do estoque (dashboard).  
+OBS: Lembrando que todas as informações referentes ao tago.io é apenas introdutório, de acordo com o que foi solicitado. Contudo, não foi praticado nessa SPRINT 3, como dito anteriormente.
 
 ## Benefícios
 - Automação: Automatiza o processo de leitura de estoque e controle de inventário com RFID.
@@ -79,8 +80,10 @@ No Wokwi, simulamos:
 - Requisição HTTP (POST) - Irá postar os dados na plataforma de nuvem
 - Enviar dados para a plataforma em nuvem (tago.io): A plataforma escolhida, tago.io, irá receber os dados de um sensor. Nesse caso, o da distância.
 - Nova leitura de estoque?: O sistema verifica se deve continuar a leitura.
-  - Se "Sim": O fluxo retorna à exibição dos dados.
-  - Se "Não": O sistema finaliza a execução.
+  - Se "Não": O sistema volta no loop para ler novamente os sensores.
+  - Se "Sim": Classificar Status do Estoque
+    - Montar JSON com RFID, Distância e Status
+    - Publicar JSON via MQTT no tópico "test_topic_challenge"
 
 ## Links Externos
 - Documentação do Projeto: https://docs.google.com/document/d/1Z9Fu4Gfrlv3Qu_EUzGQVUTOyZfjbj4FEVXcCdOAh9mo/edit?usp=sharing
