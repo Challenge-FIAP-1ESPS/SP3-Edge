@@ -103,7 +103,7 @@ No Wokwi, simulamos:
 - Exibir Dados no LCD: O ID RFID e a distância são mostrados na tela.
 - Nova leitura de estoque?: O sistema verifica se deve continuar a leitura.
   - Se "Não": O sistema volta no loop para ler novamente os sensores.
-  - Se "Sim": Classificar Status do Estoque
+  - Se "Sim": 
     - Classificar status do estoque: Com base na distância medida, o sistema classifica o nível de estoque como "Cheio", "Médio" ou "Vazio".
     - Montar JSON com RFID, Distância e Status
     - Publicar JSON via MQTT no tópico "test_topic_challenge", podendo ser recebido por ferramentas como o Node-RED, que o exibe em um dashboard ou executa ações com base nos dados.
