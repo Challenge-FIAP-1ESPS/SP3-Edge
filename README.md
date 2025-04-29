@@ -23,6 +23,7 @@ OBS: Lembrando que todas as informações referentes ao tago.io são "hipotétic
 
 ## Link Wokwi
 https://wokwi.com/projects/429499058870902785 
+
 ![image](https://github.com/user-attachments/assets/e6a53b07-fd96-4a7c-ae4d-1f4a229d7356)
 
 ## Estrutura do projeto de Arduino -  Especificações Técnicas
