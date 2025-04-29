@@ -120,4 +120,5 @@ Logo depois, o fluxo seria o mesmo, com exceção de envio para exibição do da
 
 ## Links Externos
 - Documentação do Projeto: https://docs.google.com/document/d/1Z9Fu4Gfrlv3Qu_EUzGQVUTOyZfjbj4FEVXcCdOAh9mo/edit?usp=sharing
-- Pitch: https://youtu.be/HGWAP5JJgus?si=1-d8mfUoh8zn4iuJ 
+- Pitch: https://youtu.be/HGWAP5JJgus?si=1-d8mfUoh8zn4iuJ
+- Link Vídeo Explicação: https://youtu.be/DLxI929asmE?si=DxZKBtdCEC7qwx2J 
