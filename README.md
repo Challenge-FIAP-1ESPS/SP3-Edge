@@ -23,6 +23,7 @@ OBS: Lembrando que todas as informações referentes ao tago.io são "hipotétic
 
 ## Link Wokwi
 https://wokwi.com/projects/429499058870902785 
+![image](https://github.com/user-attachments/assets/e6a53b07-fd96-4a7c-ae4d-1f4a229d7356)
 
 ## Estrutura do projeto de Arduino -  Especificações Técnicas
 ### Como Funciona?
@@ -110,6 +111,12 @@ OBS: Se estivesse em uma aplicação real conectando á plataforma em nuvem (tag
 - Requisição HTTP (POST) - Irá postar os dados na plataforma de nuvem
 - Enviar dados para a plataforma em nuvem (tago.io): A plataforma escolhida, tago.io, irá receber os dados de um sensor. Nesse caso, o da distância.
 Logo depois, o fluxo seria o mesmo, com exceção de envio para exibição do dashboard no Node-RED, uma vez que o próprio tago.io poderia fazer isso.
+
+## Anexos
+![image](https://github.com/user-attachments/assets/92fa4f13-9b24-46a2-ad67-01503554621f)
+![image](https://github.com/user-attachments/assets/f1c1c159-cc7b-4e41-8ba4-a850273221b1)
+![image](https://github.com/user-attachments/assets/99b14179-d834-4901-8d86-03aa2bd45cc5)
+![image](https://github.com/user-attachments/assets/224fa723-7fb5-443d-98d7-1b67b4c76adc)
 
 ## Links Externos
 - Documentação do Projeto: https://docs.google.com/document/d/1Z9Fu4Gfrlv3Qu_EUzGQVUTOyZfjbj4FEVXcCdOAh9mo/edit?usp=sharing
