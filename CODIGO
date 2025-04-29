@@ -1,0 +1,147 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+
+const char* SSID = "Wokwi-GUEST";
+const char* PASSWORD = "";
+
+const char* BROKER_MQTT = "test.mosquitto.org";
+const int BROKER_PORT = 1883;
+const char* ID_MQTT = "ESP32_client";
+const char* TOPIC_PUBLISH = "test_topic_challenge";
+
+#define TRIG_PIN 5
+#define ECHO_PIN 18
+const int LCD_COLUMNS = 16;
+const int LCD_ROWS = 2;
+
+WiFiClient espClient;
+PubSubClient MQTT(espClient);
+LiquidCrystal_I2C lcd(0x27, LCD_COLUMNS, LCD_ROWS);
+
+unsigned long publishUpdate = 0;
+const int PUBLISH_DELAY = 5000; 
+const int TAMANHO_JSON = 200;
+
+void setup_wifi();
+void initMQTT();
+void reconnectMQTT();
+void reconnectWiFi();
+void checkWiFiAndMQTT();
+float readDistance();
+String simulateRFID();
+
+void setup_wifi() {
+  Serial.print("Conectando ao WiFi...");
+  WiFi.begin(SSID, PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi conectado!");
+  Serial.print("IP: ");
+  Serial.println(WiFi.localIP());
+}
+
+void initMQTT() {
+  MQTT.setServer(BROKER_MQTT, BROKER_PORT);
+}
+
+void reconnectMQTT() {
+  while (!MQTT.connected()) {
+    Serial.print("Conectando ao broker MQTT...");
+    if (MQTT.connect(ID_MQTT)) {
+      Serial.println("Conectado!");
+    } else {
+      Serial.print("Falhou, rc=");
+      Serial.print(MQTT.state());
+      Serial.println(" tentando novamente em 5 segundos");
+      delay(5000);
+    }
+  }
+}
+
+void reconnectWiFi() {
+  if (WiFi.status() == WL_CONNECTED) return;
+  WiFi.begin(SSID, PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(100);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi reconectado!");
+}
+
+void checkWiFiAndMQTT() {
+  if (WiFi.status() != WL_CONNECTED) reconnectWiFi();
+  if (!MQTT.connected()) reconnectMQTT();
+}
+
+float readDistance() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  float duration = pulseIn(ECHO_PIN, HIGH);
+  return duration * 0.0344 / 2;
+}
+
+String simulateRFID() {
+  return "12345678"; // Simulando um ID de RFID
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  lcd.init();
+  lcd.backlight();
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Iniciando...");
+
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+
+  setup_wifi();
+  initMQTT();
+}
+
+void loop() {
+  checkWiFiAndMQTT();
+  MQTT.loop();
+
+  if ((millis() - publishUpdate) >= PUBLISH_DELAY) {
+    publishUpdate = millis();
+
+    long distance = readDistance();
+    String rfidID = simulateRFID();
+
+    String estoque_status;
+    if (distance <= 20) {
+      estoque_status = "Cheio";
+    } else if (distance > 20 && distance <= 150) {
+      estoque_status = "Médio";
+    } else {
+      estoque_status = "Vazio";
+    }
+
+    StaticJsonDocument<TAMANHO_JSON> doc;
+    doc["rfid"] = rfidID;
+    doc["distancia"] = distance;
+    doc["status"] = estoque_status;
+
+    char buffer[TAMANHO_JSON];
+    serializeJson(doc, buffer);
+
+    MQTT.publish(TOPIC_PUBLISH, buffer);
+    Serial.println(buffer);
+
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("ID: " + rfidID);
+    lcd.setCursor(0, 1);
+    lcd.print("Estoque: " + estoque_status);
+  }
+}
