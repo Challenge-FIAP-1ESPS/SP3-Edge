@@ -71,15 +71,22 @@ No Wokwi, simulamos:
 1. Inicialização do LCD (Apenas para teste interno)
 2. Configuração do Sensor Ultrassônico
 3. Inicialização da comunicação com a Serial
+4. Conexão com a rede Wi-Fi
+5. Inicialização da conexão com o broker MQTT
 
 ### Configuração no loop()
-1. Obtenção do ID e Distância
-2. Exibição do ID e Distância
-3. Envio de dados para a Serial
-4. Delay
+1. Verificação da conexão com Wi-Fi e MQTT (reconecta se necessário).
+2. Execução do MQTT.loop() para manter a comunicação ativa com o broker
+3. A cada 5 segundos (PUBLISH_DELAY):
+  a. Leitura do valor simulado de RFID.
+  b. Leitura da distância via sensor ultrassônico.
+  c. Classificação do status do estoque com base na distância.
+  d. Montagem de objeto JSON com rfid, distancia e status.
+  e. Publicação do JSON no tópico "test_topic_challenge" via MQTT.
+  f. Exibição das informações no display LCD (Apenas para teste interno).
 
 ## Diagrama da arquitetura e fluxo do projeto
-![image](https://github.com/user-attachments/assets/524b5db3-2a30-4d8c-a895-11511bf946a7)
+![image](https://github.com/user-attachments/assets/10a8b65b-e242-4050-a0c4-7831f06619c8)
 
 ### Explicação do Fluxograma
 
